@@ -15,230 +15,159 @@
       --ink3: #767676;
       --green: #1A6B3A;
       --green-bg: #EAF3EC;
-      --green-border: #A8D5B5;
+      --green-bd: #A8D5B5;
       --red: #991B1B;
       --red-bg: #FEF2F2;
-      --red-border: #FECACA;
+      --red-bd: #FECACA;
       --blue: #1E3A8A;
       --blue-bg: #EFF6FF;
-      --blue-border: #BFDBFE;
+      --blue-bd: #BFDBFE;
       --amber: #92400E;
       --amber-bg: #FFFBEB;
-      --amber-border: #FDE68A;
+      --amber-bd: #FDE68A;
       --purple: #5B21B6;
       --purple-bg: #F5F3FF;
-      --purple-border: #DDD6FE;
+      --purple-bd: #DDD6FE;
       --rule: #E2E0D8;
       --mono: 'IBM Plex Mono', monospace;
       --sans: 'IBM Plex Sans', sans-serif;
     }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 15px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.55; }
 
-    /* PRINT */
     @media print {
       body { background: white; font-size: 12px; }
       .no-print { display: none !important; }
-      .page { box-shadow: none !important; margin: 0 !important; border-radius: 0 !important; }
-      .card { break-inside: avoid; }
-      .flow-grid { break-inside: avoid; }
+      .doc-body { box-shadow: none !important; }
     }
 
     /* TOOLBAR */
-    .toolbar {
-      background: var(--ink); color: white; padding: 10px 32px;
-      display: flex; align-items: center; justify-content: space-between;
-      font-size: 12px; letter-spacing: 0.06em; position: sticky; top: 0; z-index: 100;
-    }
+    .toolbar { background: var(--ink); color: white; padding: 10px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; position: sticky; top: 0; z-index: 100; }
     .toolbar-logo { font-family: var(--mono); font-weight: 700; font-size: 13px; }
     .toolbar-right { display: flex; gap: 10px; }
-    .tb-btn {
-      padding: 6px 16px; border-radius: 5px; font-size: 12px; font-weight: 600; cursor: pointer; border: none;
-      font-family: var(--sans); letter-spacing: 0.04em;
-    }
+    .tb-btn { padding: 6px 16px; border-radius: 5px; font-size: 12px; font-weight: 600; cursor: pointer; border: none; font-family: var(--sans); }
     .tb-print { background: white; color: var(--ink); }
     .tb-reset { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.2); }
 
     /* PAGE */
-    .page { max-width: 1060px; margin: 28px auto 60px; padding: 0 20px; }
+    .page { max-width: 1080px; margin: 28px auto 60px; padding: 0 20px; }
 
     /* HEADER */
-    .doc-header {
-      background: var(--ink); color: white; border-radius: 12px 12px 0 0;
-      padding: 28px 36px 24px; display: flex; align-items: center; justify-content: space-between;
-    }
-    .doc-title { font-family: var(--mono); font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
-    .doc-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 4px; font-weight: 300; letter-spacing: 0.02em; }
-    .doc-tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; font-family: var(--mono); }
-
-    /* BODY */
+    .doc-header { background: var(--ink); color: white; border-radius: 12px 12px 0 0; padding: 26px 36px; display: flex; align-items: center; justify-content: space-between; }
+    .doc-title { font-family: var(--mono); font-size: 22px; font-weight: 700; }
+    .doc-sub { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 4px; font-weight: 300; }
+    .doc-tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); padding: 6px 14px; border-radius: 6px; font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.7); }
     .doc-body { background: var(--white); border-radius: 0 0 12px 12px; padding: 36px; box-shadow: 0 4px 40px rgba(0,0,0,0.08); }
 
-    /* MINDSET STRIP */
-    .mindset-strip {
-      background: var(--ink); color: white; border-radius: 10px; padding: 22px 28px;
-      margin-bottom: 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
-    }
-    .ms-col h4 { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 10px; }
-    .ms-not { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
-    .ms-not span { color: #f87171; font-weight: 600; }
-    .ms-are span { color: #4ade80; font-weight: 600; }
-    .ms-are { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
-    .ms-tone-row { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tone-chip {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 4px; padding: 5px 11px; font-size: 12px; font-weight: 500; color: rgba(255,255,255,0.75);
-      font-family: var(--mono);
-    }
+    /* MINDSET */
+    .mindset-strip { background: var(--ink); border-radius: 10px; padding: 22px 28px; margin-bottom: 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+    .ms-col h4 { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+    .ms-item { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; display: flex; align-items: flex-start; gap: 8px; }
+    .ms-item .x { color: #f87171; font-weight: 700; flex-shrink: 0; }
+    .ms-item .ck { color: #4ade80; font-weight: 700; flex-shrink: 0; }
+    .tone-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tone-chip { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); border-radius: 4px; padding: 4px 10px; font-size: 11px; color: rgba(255,255,255,0.7); font-family: var(--mono); }
 
-    /* SECTION LABEL */
-    .sec-label {
-      font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--ink3); margin-bottom: 14px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .sec-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
-    .sec-label .badge { padding: 2px 9px; border-radius: 4px; font-size: 10px; }
+    /* STEP HEADER */
+    .step-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; margin-top: 36px; }
+    .step-header:first-of-type { margin-top: 0; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--ink); color: white; font-family: var(--mono); font-size: 14px; font-weight: 700; display: grid; place-items: center; flex-shrink: 0; }
+    .step-title { font-family: var(--mono); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); }
+    .step-sub { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+    .step-rule { flex: 1; height: 1px; background: var(--rule); }
 
-    /* OPENER CARD */
-    .opener-card {
-      background: var(--green-bg); border: 1px solid var(--green-border); border-left: 4px solid var(--green);
-      border-radius: 8px; padding: 22px 24px; margin-bottom: 28px;
-    }
-    .opener-label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
-    .opener-line { font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.5; margin-bottom: 8px; }
-    .opener-note { font-size: 12px; color: var(--green); font-style: italic; }
+    /* SAY BOX */
+    .say-box { border-radius: 10px; padding: 18px 22px; margin-bottom: 14px; }
+    .say-box.green  { background: var(--green-bg);  border: 1px solid var(--green-bd);  border-left: 4px solid var(--green); }
+    .say-box.amber  { background: var(--amber-bg);  border: 1px solid var(--amber-bd);  border-left: 4px solid var(--amber); }
+    .say-box.purple { background: var(--purple-bg); border: 1px solid var(--purple-bd); border-left: 4px solid var(--purple); }
+    .say-lbl { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+    .say-box.green  .say-lbl { color: var(--green); }
+    .say-box.amber  .say-lbl { color: var(--amber); }
+    .say-box.purple .say-lbl { color: var(--purple); }
+    .say-line { font-size: 16px; font-weight: 600; color: var(--ink); line-height: 1.5; }
+    .say-note { font-size: 12px; color: var(--ink3); font-style: italic; margin-top: 8px; }
 
-    /* FLOW GRID */
-    .flow-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 28px; }
-    .flow-col { border-radius: 8px; padding: 20px; border: 1px solid; }
-    .flow-col.green { background: var(--green-bg); border-color: var(--green-border); }
-    .flow-col.red   { background: var(--red-bg);   border-color: var(--red-border); }
-    .flow-col.blue  { background: var(--blue-bg);  border-color: var(--blue-border); }
-    .flow-col-head {
-      font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid;
-      display: flex; align-items: center; gap: 7px;
-    }
-    .flow-col.green .flow-col-head { color: var(--green); border-color: var(--green-border); }
-    .flow-col.red   .flow-col-head { color: var(--red);   border-color: var(--red-border); }
-    .flow-col.blue  .flow-col-head { color: var(--blue);  border-color: var(--blue-border); }
+    /* BRANCH GRID */
+    .branch-grid { display: grid; gap: 14px; margin-bottom: 20px; }
+    .branch-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+    .branch-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .branch { border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); }
+    .branch-head { padding: 10px 16px; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+    .branch-head.green  { background: var(--green);  color: white; }
+    .branch-head.red    { background: var(--red);    color: white; }
+    .branch-head.blue   { background: var(--blue);   color: white; }
+    .branch-head.amber  { background: var(--amber);  color: white; }
+    .branch-head.purple { background: var(--purple); color: white; }
+    .branch-head.grey   { background: #444444;       color: white; }
+    .branch-body { padding: 14px 16px; background: white; display: flex; flex-direction: column; gap: 10px; }
+    .script { background: #F7F6F2; border: 1px solid var(--rule); border-radius: 6px; padding: 10px 13px; font-size: 13px; font-weight: 600; color: var(--ink); line-height: 1.55; }
+    .script .note { font-size: 11px; color: var(--ink3); font-weight: 400; font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--rule); }
+    .arrow { font-size: 11px; font-weight: 700; color: var(--ink3); font-family: var(--mono); letter-spacing: 0.06em; }
 
-    /* SCRIPT LINES */
-    .script-line {
-      font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.55;
-      margin-bottom: 10px; padding: 10px 12px; background: white;
-      border-radius: 6px; border: 1px solid var(--rule); position: relative;
-    }
-    .script-note {
-      font-size: 11px; color: var(--ink3); font-style: italic; font-weight: 400;
-      margin-top: 5px; padding-top: 5px; border-top: 1px solid var(--rule);
-    }
-    .then-arrow { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: var(--ink3); font-family: var(--mono); text-transform: uppercase; margin: 8px 0 6px; }
-    .action-line {
-      font-size: 13px; color: var(--ink2); line-height: 1.6; margin-bottom: 8px;
-      padding-left: 14px; border-left: 2px solid var(--rule);
-    }
-
-    /* CLOSE CARD */
-    .close-card {
-      background: var(--amber-bg); border: 1px solid var(--amber-border); border-left: 4px solid var(--amber);
-      border-radius: 8px; padding: 20px 24px; margin-bottom: 16px;
-    }
-    .close-label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
-    .close-line { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.55; }
-
-    /* OBJECTIONS GRID */
-    .obj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
-    .obj-card { border-radius: 8px; border: 1px solid var(--rule); overflow: hidden; }
-    .obj-them { background: #F9F9F9; padding: 12px 16px; font-size: 13px; font-weight: 600; color: var(--ink2); border-bottom: 1px solid var(--rule); display: flex; gap: 8px; }
-    .obj-you { background: white; padding: 12px 16px; font-size: 13px; color: var(--ink); line-height: 1.6; }
-    .obj-them .lbl { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--red); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; padding-top: 2px; }
-    .obj-you .lbl  { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--green); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; padding-top: 2px; display: block; margin-bottom: 5px; }
-    .obj-note { font-size: 11px; color: var(--ink3); font-style: italic; margin-top: 6px; }
-
-    /* RULES STRIP */
-    .rules-strip { background: var(--purple-bg); border: 1px solid var(--purple-border); border-radius: 8px; padding: 18px 22px; margin-bottom: 28px; }
-    .rules-strip h4 { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); margin-bottom: 12px; }
-    .rules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .rule-item { background: white; border: 1px solid var(--purple-border); border-radius: 6px; padding: 10px 12px; font-size: 12px; font-weight: 600; color: var(--purple); text-align: center; }
-
-    /* VOICEMAIL */
-    .vm-card {
-      background: #F9F9F9; border: 1px solid var(--rule); border-radius: 8px; padding: 20px 24px; margin-bottom: 28px;
-    }
-    .vm-label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink3); margin-bottom: 10px; }
-    .vm-line { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.65; }
-    .vm-tip { font-size: 12px; color: var(--ink3); margin-top: 8px; font-style: italic; }
+    /* OBJECTION TABLE */
+    .obj-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; border-radius: 10px; overflow: hidden; border: 1px solid var(--rule); }
+    .obj-table thead tr { background: var(--ink); }
+    .obj-table thead th { padding: 10px 16px; font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: white; text-align: left; }
+    .obj-table tbody tr { border-bottom: 1px solid var(--rule); }
+    .obj-table tbody tr:last-child { border-bottom: none; }
+    .obj-table tbody tr:nth-child(even) { background: #FAFAF8; }
+    .obj-table td { padding: 13px 16px; font-size: 13px; vertical-align: top; line-height: 1.6; }
+    .obj-table td:first-child { color: var(--red); font-weight: 600; width: 32%; border-right: 1px solid var(--rule); }
+    .obj-note { font-size: 11px; color: var(--ink3); font-style: italic; margin-top: 5px; }
 
     /* SCHEDULE */
-    .sch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+    .sch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 22px; }
     .sch-card { border-radius: 10px; border: 1px solid var(--rule); overflow: hidden; }
-    .sch-card-head { padding: 13px 18px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; }
-    .sch-card-head.you { background: var(--ink); color: white; }
-    .sch-card-head.partner { background: var(--blue-bg); color: var(--blue); border-bottom: 1px solid var(--blue-border); }
-    .sch-card-head .who-badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
-    .sch-card-head.you .who-badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
-    .sch-card-head.partner .who-badge { background: var(--blue-border); color: var(--blue); }
+    .sch-head { padding: 12px 18px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; }
+    .sch-head.you { background: var(--ink); color: white; }
+    .sch-head.partner { background: var(--blue-bg); color: var(--blue); border-bottom: 1px solid var(--blue-bd); }
+    .sch-head .badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+    .sch-head.you .badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.75); }
+    .sch-head.partner .badge { background: var(--blue-bd); color: var(--blue); }
     .sch-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--rule); }
     .sch-row:last-child { border-bottom: none; }
-    .sch-time { width: 110px; flex-shrink: 0; padding: 12px 14px; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink3); border-right: 1px solid var(--rule); display: flex; align-items: center; }
-    .sch-detail { padding: 11px 14px; flex: 1; }
-    .sch-detail .label { font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
-    .sch-detail .note { font-size: 11px; color: var(--ink3); font-style: italic; }
-    .sch-row.hot { background: var(--green-bg); }
-    .sch-row.hot .sch-time { color: var(--green); }
-    .sch-row.hot .sch-detail .label { color: var(--green); }
+    .sch-time { width: 110px; flex-shrink: 0; padding: 11px 14px; font-family: var(--mono); font-size: 11px; font-weight: 700; border-right: 1px solid var(--rule); display: flex; align-items: center; color: var(--ink3); }
+    .sch-detail { padding: 10px 14px; flex: 1; }
+    .sch-lbl { font-size: 12px; font-weight: 700; margin-bottom: 2px; color: var(--ink); }
+    .sch-note { font-size: 11px; color: var(--ink3); font-style: italic; }
+    .sch-row.hot  { background: var(--green-bg); }
+    .sch-row.hot  .sch-time, .sch-row.hot  .sch-lbl { color: var(--green); }
     .sch-row.warm { background: var(--amber-bg); }
-    .sch-row.warm .sch-time { color: var(--amber); }
-    .sch-row.cold { background: #FAFAF8; }
-    .sch-row.off { background: #F3F3F0; }
-    .sch-row.off .sch-time, .sch-row.off .sch-detail .label, .sch-row.off .sch-detail .note { color: #CCCCCC; }
-    .sch-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
-    .leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink2); }
-    .leg-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
-    .why-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
-    .why-box { background: #F5F5F3; border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; }
-    .why-box h4 { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 7px; }
-    .why-box p { font-size: 12px; color: var(--ink2); line-height: 1.6; }
-    .why-box strong { color: var(--ink); }
+    .sch-row.warm .sch-time, .sch-row.warm .sch-lbl { color: var(--amber); }
+    .sch-row.off  { background: #F3F3F0; }
+    .sch-row.off  .sch-time, .sch-row.off .sch-lbl, .sch-row.off .sch-note { color: #CCCCCC; }
 
-    /* CALL TRACKER */
-    .tracker { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; margin-bottom: 28px; }
-    .tracker-head { background: var(--ink); color: white; padding: 12px 20px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: flex; justify-content: space-between; }
+    .targets-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin-bottom: 28px; }
+    .target-box { background: var(--purple-bg); border: 1px solid var(--purple-bd); border-radius: 8px; padding: 16px; text-align: center; }
+    .target-num { font-family: var(--mono); font-size: 26px; font-weight: 700; color: var(--purple); line-height: 1; }
+    .target-lbl { font-size: 12px; color: var(--ink3); margin-top: 6px; }
+
+    /* TRACKER */
+    .tracker { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
+    .tracker-head { background: var(--ink); color: white; padding: 12px 20px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; display: flex; justify-content: space-between; }
     .tracker-table { width: 100%; border-collapse: collapse; font-size: 12px; }
     .tracker-table th { background: #F5F5F3; padding: 9px 14px; text-align: left; font-weight: 700; font-size: 11px; letter-spacing: 0.04em; color: var(--ink3); border-bottom: 1px solid var(--rule); }
-    .tracker-table td { padding: 10px 14px; border-bottom: 1px solid var(--rule); color: var(--ink2); }
+    .tracker-table td { padding: 10px 14px; border-bottom: 1px solid var(--rule); }
     .tracker-table tr:last-child td { border-bottom: none; }
     .tracker-table input { width: 100%; border: none; background: transparent; font-family: var(--sans); font-size: 12px; color: var(--ink); outline: none; }
-    .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
-    .dot-booked { background: #22c55e; }
-    .dot-cb { background: #f59e0b; }
-    .dot-no { background: #ef4444; }
 
-    /* DIVIDER */
-    .divider { height: 1px; background: var(--rule); margin: 28px 0; }
-
-    /* FOOTER */
+    .divider { height: 1px; background: var(--rule); margin: 32px 0; }
     .doc-footer { text-align: center; font-size: 11px; color: var(--ink3); margin-top: 28px; font-family: var(--mono); }
 
-    /* RESPONSIVE */
     @media (max-width: 760px) {
-      .flow-grid { grid-template-columns: 1fr; }
-      .obj-grid { grid-template-columns: 1fr; }
-      .rules-grid { grid-template-columns: 1fr 1fr; }
+      .branch-grid.cols-3, .branch-grid.cols-2 { grid-template-columns: 1fr; }
       .mindset-strip { grid-template-columns: 1fr; }
-      .doc-header { flex-direction: column; gap: 14px; align-items: flex-start; }
+      .sch-grid { grid-template-columns: 1fr; }
+      .targets-grid { grid-template-columns: 1fr 1fr; }
+      .doc-header { flex-direction: column; gap: 12px; align-items: flex-start; }
     }
   </style>
 </head>
 <body>
 
-<!-- TOOLBAR -->
 <div class="toolbar no-print">
-  <div class="toolbar-logo">MONTREAL X AI // BATTLE CARD + SCHEDULE</div>
+  <div class="toolbar-logo">MONTREAL X AI // CALLER BATTLE CARD v3</div>
   <div class="toolbar-right">
     <button class="tb-btn tb-reset" onclick="resetTracker()">Reset Tracker</button>
     <button class="tb-btn tb-print" onclick="window.print()">🖨 Print</button>
@@ -246,41 +175,35 @@
 </div>
 
 <div class="page">
-
-  <!-- HEADER -->
   <div class="doc-header">
     <div>
       <div class="doc-title">COLD CALL BATTLE CARD</div>
-      <div class="doc-sub">AI Receptionist · Service Business Outreach · Calling Schedule · Montreal X AI</div>
+      <div class="doc-sub">AI Receptionist · Service Business Outreach · Schedule · Montreal X AI</div>
     </div>
-    <div class="doc-tag">v2.0 — CALLER EDITION</div>
+    <div class="doc-tag">v3.0 — TEAM EDITION</div>
   </div>
 
   <div class="doc-body">
 
-    <!-- MINDSET STRIP -->
+    <!-- MINDSET -->
     <div class="mindset-strip">
       <div class="ms-col">
         <h4>You Are NOT</h4>
-        <div class="ms-not">
-          <span>✗</span> Asking for a favor<br>
-          <span>✗</span> Hoping they buy<br>
-          <span>✗</span> Trying to convince anyone<br>
-          <span>✗</span> Pitching a product
-        </div>
+        <div class="ms-item"><span class="x">✗</span> Asking for a favour</div>
+        <div class="ms-item"><span class="x">✗</span> Hoping they buy</div>
+        <div class="ms-item"><span class="x">✗</span> Trying to convince anyone</div>
+        <div class="ms-item"><span class="x">✗</span> Pitching a product</div>
       </div>
       <div class="ms-col">
         <h4>You ARE</h4>
-        <div class="ms-are">
-          <span>✓</span> Identifying a revenue leak<br>
-          <span>✓</span> Diagnosing a problem<br>
-          <span>✓</span> Offering a specific fix<br>
-          <span>✓</span> Booking a conversation
-        </div>
+        <div class="ms-item"><span class="ck">✓</span> Finding a revenue leak</div>
+        <div class="ms-item"><span class="ck">✓</span> Diagnosing a problem</div>
+        <div class="ms-item"><span class="ck">✓</span> Offering a specific fix</div>
+        <div class="ms-item"><span class="ck">✓</span> Booking a conversation</div>
       </div>
       <div class="ms-col">
-        <h4>Tonality Always</h4>
-        <div class="ms-tone-row">
+        <h4>Tone — Always</h4>
+        <div class="tone-chips">
           <span class="tone-chip">Slow down</span>
           <span class="tone-chip">Slight smile</span>
           <span class="tone-chip">Downward inflection</span>
@@ -291,343 +214,417 @@
       </div>
     </div>
 
-    <!-- GOLDEN RULE -->
-    <div class="rules-strip">
-      <h4>⚡ The 4 Unbreakable Rules</h4>
-      <div class="rules-grid">
-        <div class="rule-item">Always close on a time — never "I'll send info"</div>
-        <div class="rule-item">Ask one question. Then shut up. Let them fill silence.</div>
-        <div class="rule-item">You're a doctor diagnosing — not a rep pitching</div>
-        <div class="rule-item">Every answer leads to a next question or a time ask</div>
-      </div>
+    <!-- ══ STEP 1 ══ -->
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <div><div class="step-title">Qualify Who Picked Up</div><div class="step-sub">Say this the second someone answers — before anything else</div></div>
+      <div class="step-rule"></div>
     </div>
 
-    <!-- OPENER -->
-    <div class="sec-label">Step 1 — The Opener</div>
-    <div class="opener-card">
-      <div class="opener-label">📞 Say This — Word For Word</div>
-      <div class="opener-line">"Hey, quick question — when you guys are out on jobs or after-hours, do calls ever slip through?"</div>
-      <div class="opener-note">Smile slightly. Speak slowly. Downward inflection at the end. Then — stop talking. Silence is your friend.</div>
+    <div class="say-box green">
+      <div class="say-lbl">📞 Every call starts here — word for word</div>
+      <div class="say-line">"Hey — is this [Business Name]?"&nbsp;&nbsp;→&nbsp;&nbsp;"Great — am I speaking with the owner?"</div>
+      <div class="say-note">Two seconds. One question. Now you know exactly where you are — pick the column below.</div>
     </div>
 
-    <!-- MAIN FLOW -->
-    <div class="sec-label">Step 2 — Listen &amp; Branch <span class="badge" style="background:var(--rule);color:var(--ink3);">Follow their answer</span></div>
-
-    <div class="flow-grid">
-
-      <!-- YES -->
-      <div class="flow-col green">
-        <div class="flow-col-head">✓ They Say YES / Some</div>
-
-        <div class="script-line">
-          "Got it. When that happens — is it mostly going to voicemail, or do you think some just disappear completely?"
-          <div class="script-note">Shut up. Let them talk. Nod. Their answer is your pitch.</div>
-        </div>
-
-        <div class="then-arrow">→ Then ask</div>
-
-        <div class="script-line">
-          "If those calls were captured automatically and booked in instantly — would that actually be useful for you?"
-          <div class="script-note">Simple yes/no. Don't elaborate. Wait.</div>
-        </div>
-
-        <div class="then-arrow">→ If yes, close immediately</div>
-
-        <div class="close-card" style="margin:0;">
-          <div class="close-label">🗓 Time Close</div>
-          <div class="close-line">"Perfect. Let me show you exactly how it works — takes 10 minutes. Are you more free tomorrow afternoon or Thursday morning?"</div>
+    <div class="branch-grid cols-3">
+      <div class="branch">
+        <div class="branch-head green">✅ They Say Yes — Owner</div>
+        <div class="branch-body">
+          <div class="script">You're in. Skip to <strong>Step 3 — The Opener</strong> right now.</div>
         </div>
       </div>
-
-      <!-- NO -->
-      <div class="flow-col red">
-        <div class="flow-col-head">✗ They Say NO / We Don't Miss Calls</div>
-
-        <div class="script-line">
-          "Nice — are you running a live answering service, or is it handled internally?"
-          <div class="script-note">Find the crack. There's always one.</div>
-        </div>
-
-        <div class="then-arrow">→ If internally</div>
-
-        <div class="script-line">
-          "Got it — so when someone's tied up on a job and a new call comes in, what actually happens to that call?"
-          <div class="script-note">Let them explain. They'll usually reveal the gap themselves.</div>
-        </div>
-
-        <div class="then-arrow">→ If answering service</div>
-
-        <div class="script-line">
-          "Are they booking directly into your calendar — or are they just forwarding messages and you follow up?"
-          <div class="script-note">Message forwarding ≠ booked job. Find the delay = find the friction.</div>
-        </div>
-
-        <div class="then-arrow">→ Once friction found</div>
-
-        <div class="close-card" style="margin:0;">
-          <div class="close-label">🗓 Time Close</div>
-          <div class="close-line">"That's exactly what this fixes. Worth 10 minutes? Tomorrow or Thursday?"</div>
+      <div class="branch">
+        <div class="branch-head amber">⚠️ They Say No / Pause</div>
+        <div class="branch-body">
+          <div class="script">"No worries — who am I speaking with?"
+            <div class="note">Get their name and role. Then go to Step 2 — Gatekeeper Dialogue.</div>
+          </div>
         </div>
       </div>
-
-      <!-- SEND INFO -->
-      <div class="flow-col blue">
-        <div class="flow-col-head">📩 They Say Send Info</div>
-
-        <div class="script-line">
-          "I can do that — but honestly it'll make a lot more sense if you hear it in action. It's literally a 10-minute walkthrough."
-          <div class="script-note">Don't argue. Agree, then redirect.</div>
+      <div class="branch">
+        <div class="branch-head blue">📱 Owner Answers Directly</div>
+        <div class="branch-body">
+          <div class="script">They say "speaking" or give their name. Skip straight to <strong>Step 3 — The Opener</strong>.</div>
         </div>
-
-        <div class="then-arrow">→ Immediately pivot to time</div>
-
-        <div class="script-line">
-          "What's better for you — tomorrow afternoon or Thursday morning?"
-          <div class="script-note">If they still push for email only, get their email and send a demo recording. Don't ghost. Follow up in 2 days.</div>
-        </div>
-
-        <div class="then-arrow">→ After sending info (follow up)</div>
-
-        <div class="script-line">
-          "Hey — I sent that over Tuesday. Did you get a chance to look? Two minutes — did it make sense?"
-          <div class="script-note">Short. No apology for following up. Downward inflection.</div>
-        </div>
-
       </div>
     </div>
 
     <div class="divider"></div>
 
-    <!-- OBJECTIONS -->
-    <div class="sec-label">Step 3 — Common Objections &amp; Responses</div>
+    <!-- ══ STEP 2 ══ -->
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <div><div class="step-title">Gatekeeper Dialogue Options</div><div class="step-sub">Only if they said NO above — pick the column that matches who answered</div></div>
+      <div class="step-rule"></div>
+    </div>
 
-    <div class="obj-grid">
+    <div class="say-box purple" style="margin-bottom:16px;">
+      <div class="say-lbl">🧠 Mindset for this step</div>
+      <div class="say-line" style="font-size:14px;">Don't fight them. Don't trick them. Be so calm and natural that transferring you is easier than explaining why not. You're a peer calling a peer — not a salesperson asking for access.</div>
+    </div>
 
-      <div class="obj-card">
-        <div class="obj-them"><span class="lbl">Them</span>"We don't really get a lot of calls."</div>
-        <div class="obj-you">
-          <span class="lbl">You</span>
-          "Totally fair — two possibilities there. Either people aren't finding you online yet, which is something we can help with. Or you might be getting more than you realize and missing them. Do you have a way to actually track how many go unanswered?"
-          <div class="obj-note">→ Creates doubt. Opens door. If they admit no tracking = your opening.</div>
+    <div class="branch-grid cols-3">
+      <div class="branch">
+        <div class="branch-head purple">📋 Receptionist / Front Desk</div>
+        <div class="branch-body">
+          <div class="script">"Who's the owner there?"
+            <div class="note">Get the name first. The second they give it, follow with: "Is [Name] around?" — now you sound like you already know them.</div>
+          </div>
+          <div class="arrow">→ If they ask "what's it regarding?"</div>
+          <div class="script">"It's about their phone system — just a quick question for them directly."
+            <div class="note">Vague enough to pass. Honest enough to sleep at night. Never say "sales call."</div>
+          </div>
+          <div class="arrow">→ If they push harder</div>
+          <div class="script">"Totally fair — I help [trade] businesses capture missed calls. 30 seconds. Is there a better time to reach them directly?"
+            <div class="note">Now you're asking for a time, not a transfer. Same result either way.</div>
+          </div>
         </div>
       </div>
 
-      <div class="obj-card">
-        <div class="obj-them"><span class="lbl">Them</span>"We're too busy right now / not a good time."</div>
-        <div class="obj-you">
-          <span class="lbl">You</span>
-          "Totally get it — when's a better time this week? I just need 10 minutes, and I can work around your schedule."
-          <div class="obj-note">→ Don't apologize. Ask for a specific alternate time. If they say "try next month" — calendar it and call exactly then.</div>
+      <div class="branch">
+        <div class="branch-head red">📞 Call Centre / Dispatcher</div>
+        <div class="branch-body">
+          <div class="script">"Who handles decisions about how the business manages its incoming calls — is that the owner or more of an ops person?"
+            <div class="note">Qualify who to talk to before asking to be transferred blindly.</div>
+          </div>
+          <div class="arrow">→ If they say "that's me"</div>
+          <div class="script">"Perfect — when calls come in after-hours or when everyone's busy, what happens to those right now?"
+            <div class="note">They may be your actual contact. Run the opener from here — go to Step 3.</div>
+          </div>
+          <div class="arrow">→ If they say "that's the owner"</div>
+          <div class="script">"Got it — what's the best way to reach them directly? I'd rather not keep going through the main line."
+            <div class="note">Ask for a direct number or email. Being straight with them earns a little goodwill.</div>
+          </div>
         </div>
       </div>
 
-      <div class="obj-card">
-        <div class="obj-them"><span class="lbl">Them</span>"How much does it cost?"</div>
-        <div class="obj-you">
-          <span class="lbl">You</span>
-          "Depends on what you need — starts at $249 a month. Most guys find one recovered job covers the whole month. That's kind of the point. Worth 10 minutes to see if it makes sense for you?"
-          <div class="obj-note">→ Don't defend the price. Anchor it against one job value. Then immediately back to the time close.</div>
+      <div class="branch">
+        <div class="branch-head grey">🔁 Can't Get Through At All</div>
+        <div class="branch-body">
+          <div class="script">"Is there a direct line or email for the owner? I'd rather not leave a general voicemail."
+            <div class="note">Most receptionists will give you an email at minimum. An email is a win.</div>
+          </div>
+          <div class="arrow">→ If they won't give anything</div>
+          <div class="script">"No worries — when do you usually see them in the office? I'll try back then."
+            <div class="note">Get the window. Call back at exactly that time: "The person who answered mentioned this was a good time to catch [Name]."</div>
+          </div>
+          <div class="arrow">→ Last resort</div>
+          <div class="script">Call before 8am or after 5pm. Owners answer their own phones before the gatekeeper arrives.
+            <div class="note">Works especially well Monday and Friday. Trades start early.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VERIFY DM -->
+    <div style="font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin:20px 0 12px;display:flex;align-items:center;gap:10px;">
+      Also verify you have the decision maker
+      <span style="flex:1;height:1px;background:var(--rule);display:block;"></span>
+    </div>
+    <table class="obj-table" style="margin-bottom:0;">
+      <thead><tr><th>Situation</th><th>What to Say</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Not sure if they own the business</td>
+          <td>"Quick thing — are you the owner, or is there someone else who handles decisions like this?"
+            <div class="obj-note">→ Ask early. Better now than 5 minutes into the wrong conversation.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>"I'll pass the message along"</td>
+          <td>"I appreciate that — it won't make sense second-hand though. Is there a direct number or time I can reach them myself?"
+            <div class="obj-note">→ Messages never get passed. Get a direct path or it's dead.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>Person seems junior / not in charge</td>
+          <td>"Got it — this is more of an owner-level conversation. Do you know when [Name] is usually around?"
+            <div class="obj-note">→ Don't pitch someone who can't say yes. Politely route up.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>"The owner doesn't take calls"</td>
+          <td>"Totally get it — what's the best way to get something in front of them? Email, text, or a better time to call?"
+            <div class="obj-note">→ Give three options. One will stick.</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <!-- ══ STEP 3 ══ -->
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <div><div class="step-title">The Opener</div><div class="step-sub">You're talking to the owner. Start here.</div></div>
+      <div class="step-rule"></div>
+    </div>
+
+    <div class="say-box green">
+      <div class="say-lbl">📞 Say this — word for word</div>
+      <div class="say-line">"Hey, quick question — when you guys are out on jobs or after-hours, do calls ever slip through?"</div>
+      <div class="say-note">Smile slightly. Slow. Downward inflection at the end. Then stop. Silence is your friend — let them fill it.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ══ STEP 4 ══ -->
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <div><div class="step-title">Branch on Their Answer</div><div class="step-sub">Listen first — then pick your column</div></div>
+      <div class="step-rule"></div>
+    </div>
+
+    <div class="branch-grid cols-3">
+      <div class="branch">
+        <div class="branch-head green">✅ They Say YES / Some</div>
+        <div class="branch-body">
+          <div class="script">"When that happens — is it mostly voicemail, or do some just disappear completely?"
+            <div class="note">Shut up. Let them talk. Their answer is your pitch.</div>
+          </div>
+          <div class="arrow">→ Then ask</div>
+          <div class="script">"If those calls were captured automatically and booked in instantly — would that be useful?"
+            <div class="note">Simple yes or no. Don't elaborate. Wait.</div>
+          </div>
+          <div class="arrow">→ If yes — close immediately</div>
+          <div class="script">"Perfect. Let me show you in 10 minutes. Tomorrow afternoon or Thursday morning?"
+            <div class="note">Two specific times. Never "when works for you?"</div>
+          </div>
         </div>
       </div>
 
-      <div class="obj-card">
-        <div class="obj-them"><span class="lbl">Them</span>"I already have someone answering calls."</div>
-        <div class="obj-you">
-          <span class="lbl">You</span>
-          "That's great — are they available nights and weekends too? And when they're not, what's the backup?"
-          <div class="obj-note">→ Almost nobody has 24/7 human coverage. That's your gap. Don't argue with their current setup — find where it ends.</div>
+      <div class="branch">
+        <div class="branch-head red">✗ They Say NO / We Don't Miss Calls</div>
+        <div class="branch-body">
+          <div class="script">"Nice — are you running a live answering service, or is it handled internally?"
+            <div class="note">Find the crack. There's always one.</div>
+          </div>
+          <div class="arrow">→ If internally</div>
+          <div class="script">"Got it — when someone's tied up on a job and a new call comes in, what actually happens to that call?"
+            <div class="note">Let them explain. They'll usually reveal the gap themselves.</div>
+          </div>
+          <div class="arrow">→ If answering service</div>
+          <div class="script">"Are they booking directly into your calendar, or just forwarding messages for you to follow up?"
+            <div class="note">Message forwarding is not a booked job. The delay is the friction.</div>
+          </div>
+          <div class="arrow">→ Once friction found</div>
+          <div class="script">"That's exactly what this fixes. Worth 10 minutes? Tomorrow or Thursday?"</div>
         </div>
       </div>
 
-      <div class="obj-card">
-        <div class="obj-them"><span class="lbl">Them</span>"Is it AI? My customers won't like that."</div>
-        <div class="obj-you">
-          <span class="lbl">You</span>
-          "Completely understand — most people say that before they hear it. It's not a robot voice. You can call our demo line right now and tell me if you'd know the difference. Takes 60 seconds."
-          <div class="obj-note">→ Don't argue. Give them a live experience. Hand them the number: 438-886-3878.</div>
+      <div class="branch">
+        <div class="branch-head blue">📩 They Say Send Info</div>
+        <div class="branch-body">
+          <div class="script">"I can — but it makes way more sense if you hear it in action. It's 10 minutes."
+            <div class="note">Agree, then redirect. Don't argue.</div>
+          </div>
+          <div class="arrow">→ Immediately pivot to time</div>
+          <div class="script">"What's better — tomorrow afternoon or Thursday morning?"</div>
+          <div class="arrow">→ If they still insist on email</div>
+          <div class="script">Send it. Follow up in 2 days:
+            <div class="note">"Sent that over Tuesday — did it make sense? Two minutes."</div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="obj-card">
-        <div class="obj-them"><span class="lbl">Them</span>"I need to talk to my partner / think about it."</div>
-        <div class="obj-you">
-          <span class="lbl">You</span>
-          "Makes sense. When are you two usually in the same place? I can do a quick 10-minute call with both of you — easier than playing phone tag."
-          <div class="obj-note">→ Offer to include the decision-maker directly. Never let "think about it" be the final answer without a next step.</div>
-        </div>
+    <div class="divider"></div>
+
+    <!-- ══ STEP 5 ══ -->
+    <div class="step-header">
+      <div class="step-num">5</div>
+      <div><div class="step-title">Handle Objections</div><div class="step-sub">Every single response ends with a time close</div></div>
+      <div class="step-rule"></div>
+    </div>
+
+    <table class="obj-table">
+      <thead><tr><th>They Say</th><th>You Say</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>"We don't get many calls."</td>
+          <td>"Two possibilities — either people aren't finding you online yet, which we can help with. Or you're getting more than you realize and missing them. Do you actually have a way to track how many go unanswered?"
+            <div class="obj-note">→ Creates doubt. Opens the door. No tracking = your opening.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>"How much does it cost?"</td>
+          <td>"Starts at $249 a month. Most guys find one recovered job covers the whole month — that's the point. Worth 10 minutes to see if it makes sense for you?"
+            <div class="obj-note">→ Never defend the price. Anchor against one job value. Back to the time close.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>"I already have someone answering."</td>
+          <td>"That's great — are they available nights and weekends too? And when they're not, what's the backup?"
+            <div class="obj-note">→ Nobody has 24/7 human coverage. Find where it ends.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>"My customers won't like AI."</td>
+          <td>"Most people say that before they hear it. Call our demo line right now and tell me if you'd know the difference — 60 seconds. 438-886-3878."
+            <div class="obj-note">→ Don't argue. Let the AI sell itself.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>"Need to think / talk to my partner."</td>
+          <td>"Makes sense — when are you two usually together? I can do a quick call with both of you, easier than phone tag."
+            <div class="obj-note">→ Include the decision-maker. Never let "think about it" end without a next step booked.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>"Too busy / bad time."</td>
+          <td>"Totally — when's a better time this week? I only need 10 minutes."
+            <div class="obj-note">→ Don't apologize. Get a specific alternate time. "Next month" = calendar it exactly and call then.</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <!-- ══ STEP 6 ══ -->
+    <div class="step-header">
+      <div class="step-num">6</div>
+      <div><div class="step-title">Close &amp; Confirm the Demo</div><div class="step-sub">The second they agree — lock it in before they change their mind</div></div>
+      <div class="step-rule"></div>
+    </div>
+
+    <div class="branch-grid cols-2">
+      <div class="say-box amber" style="margin-bottom:0;">
+        <div class="say-lbl">📅 Time Close — Use Every Single Time</div>
+        <div class="say-line">"Are you more free tomorrow afternoon or Thursday morning?"</div>
+        <div class="say-note">Two options only. Never open-ended. If both are bad, ask what works — then hold the new time.</div>
       </div>
-
+      <div class="say-box green" style="margin-bottom:0;">
+        <div class="say-lbl">✅ Once They Pick a Time</div>
+        <div class="say-line">"Perfect — I'll send a calendar invite right now. All you need is 10 minutes and a phone. Sound good?"</div>
+        <div class="say-note">Send the invite the second you hang up. Include 438-886-3878. Text morning of: "Looking forward to the call at [time]. Demo line if curious now: 438-886-3878"</div>
+      </div>
     </div>
 
     <div class="divider"></div>
 
     <!-- VOICEMAIL -->
-    <div class="sec-label">Voicemail Script</div>
-    <div class="vm-card">
-      <div class="vm-label">🔴 Leave This If They Don't Pick Up</div>
-      <div class="vm-line">"Hey [Name], [Your name] calling from Montreal X AI — quick question about missed calls. Give me a call back when you get a sec. [Your number]. Talk soon."</div>
-      <div class="vm-tip">Keep it under 20 seconds. Curious tone, not salesy. No product names. No pitching. You want a callback — that's it. Follow up with a text 30 min later: "Just left you a voicemail — quick question about missed calls. Worth 2 min?"</div>
+    <div class="step-header">
+      <div class="step-num" style="background:#444;font-size:12px;">VM</div>
+      <div><div class="step-title">Voicemail — If No Answer</div><div class="step-sub">Under 20 seconds. No pitch. One goal: get a callback.</div></div>
+      <div class="step-rule"></div>
     </div>
 
-    <!-- DEMO CLOSE -->
-    <div class="sec-label">Demo Booking — Confirm It Right</div>
-    <div class="opener-card">
-      <div class="opener-label">✅ Once They Agree to a Demo</div>
-      <div class="opener-line">"Perfect. I've got [time] on [day] — I'll send you a quick calendar invite. All you need is 10 minutes and a phone. No prep, no install. Sound good?"</div>
-      <div class="opener-note">Send the invite the second you hang up. Include the demo number in the invite: 438-886-3878. Follow up the morning of with a one-line text: "Looking forward to the quick call at [time] today. Here's the demo line you can try right now if curious: 438-886-3878"</div>
+    <div class="branch-grid cols-2">
+      <div class="say-box purple" style="margin-bottom:0;">
+        <div class="say-lbl">🔴 Leave This</div>
+        <div class="say-line">"Hey [Name], [Your name] from Montreal X AI — quick question about missed calls. Give me a ring when you get a sec. [Your number]. Talk soon."</div>
+        <div class="say-note">Curious tone only. No product name. No pitch. You want a callback — that's it.</div>
+      </div>
+      <div class="say-box purple" style="margin-bottom:0;">
+        <div class="say-lbl">📱 Text 30 Min After</div>
+        <div class="say-line">"Just left you a voicemail — quick question about missed calls. Worth 2 min?"</div>
+        <div class="say-note">Short. No context. The curiosity gap does the work. Don't explain it — let them call back to find out.</div>
+      </div>
     </div>
 
     <div class="divider"></div>
 
+    <!-- ══ SCHEDULE ══ -->
+    <div class="step-header">
+      <div class="step-num" style="background:var(--green);font-size:16px;">⏰</div>
+      <div><div class="step-title">Calling Schedule</div><div class="step-sub">When to dial — and why each window works</div></div>
+      <div class="step-rule"></div>
+    </div>
+
+    <div class="branch-grid cols-3" style="margin-bottom:20px;">
+      <div class="branch">
+        <div class="branch-head green">🔥 Best Windows</div>
+        <div class="branch-body">
+          <div class="script">8:00–9:30am &amp; 4:00–6:00pm<div class="note">Pre-job and end-of-day. Owners have their phones. Highest answer rate of the day. Hit cold leads here.</div></div>
+        </div>
+      </div>
+      <div class="branch">
+        <div class="branch-head amber">⚡ Good Windows</div>
+        <div class="branch-body">
+          <div class="script">1:00–3:00pm<div class="note">After lunch, between jobs. Good for callbacks and warm leads. Lower pickup on cold outreach.</div></div>
+        </div>
+      </div>
+      <div class="branch">
+        <div class="branch-head grey">🚫 Avoid for Cold</div>
+        <div class="branch-body">
+          <div class="script">10:00am–12:00pm<div class="note">On a job, hands dirty, can't talk. Only call this window if they specifically told you to.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="branch-grid cols-3" style="margin-bottom:22px;">
+      <div class="branch">
+        <div class="branch-head green">🔥 Morning Window</div>
+        <div class="branch-body">
+          <div class="script">Cold calls only — highest answer rate of the day.<div class="note">You solo. Trades are pre-job, phone in hand. Hit new leads hard.</div></div>
+        </div>
+      </div>
+      <div class="branch">
+        <div class="branch-head amber">⚡ Afternoon Window</div>
+        <div class="branch-body">
+          <div class="script">Both on — demos, warm callbacks, cold outreach.<div class="note">Partner jumps in here. Handoff flagged leads from morning. Tag-team.</div></div>
+        </div>
+      </div>
+      <div class="branch">
+        <div class="branch-head green">🔥 Evening Window</div>
+        <div class="branch-body">
+          <div class="script">Both dialing together — best window of the day.<div class="note">Trades wrapping jobs, in the truck. Cold + callbacks. Go hard.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="targets-grid">
+      <div class="target-box"><div class="target-num">40–60</div><div class="target-lbl">Dials per person / day</div></div>
+      <div class="target-box"><div class="target-num">8–15</div><div class="target-lbl">Conversations</div></div>
+      <div class="target-box"><div class="target-num">1–3</div><div class="target-lbl">Demos booked</div></div>
+      <div class="target-box"><div class="target-num">3–5</div><div class="target-lbl">Callbacks set</div></div>
+    </div>
+
     <div class="divider"></div>
 
-    <!-- SCHEDULE -->
-    <div class="sec-label">Calling Schedule — When To Dial</div>
-
-    <div class="why-row">
-      <div class="why-box">
-        <h4>🔥 Why Morning Wins</h4>
-        <p>Plumbers & trades leave for jobs by <strong>8am</strong>. Catch them before they're on a ladder. <strong>8–9:30am</strong> is the single highest answer-rate window of the day.</p>
-      </div>
-      <div class="why-box">
-        <h4>⚡ Why 4–6pm Works</h4>
-        <p>Jobs wrap up, guys are in the truck driving home. <strong>Not mid-task.</strong> More relaxed, more likely to talk. Second best window, especially for callbacks.</p>
-      </div>
-      <div class="why-box">
-        <h4>🚫 Why Midday Is Weak</h4>
-        <p>On a job, hands dirty, can't talk. <strong>Exception:</strong> if they said call at noon, honour it exactly. Otherwise use midday for list prep and follow-ups.</p>
-      </div>
+    <!-- TRACKER -->
+    <div class="step-header no-print">
+      <div class="step-num" style="background:var(--blue);font-size:16px;">📋</div>
+      <div><div class="step-title">Today's Call Log</div><div class="step-sub">Saves automatically in your browser — resets daily with the button above</div></div>
+      <div class="step-rule"></div>
     </div>
 
-    <div class="sch-legend">
-      <div class="leg"><div class="leg-dot" style="background:var(--green-bg);border:1px solid var(--green-border);"></div> Best window — dial hard</div>
-      <div class="leg"><div class="leg-dot" style="background:var(--amber-bg);border:1px solid var(--amber-border);"></div> Good window — callbacks + warm leads</div>
-      <div class="leg"><div class="leg-dot" style="background:#FAFAF8;border:1px solid var(--rule);"></div> Prep / admin</div>
-      <div class="leg"><div class="leg-dot" style="background:#F3F3F0;border:1px solid #E0E0DC;"></div> Off / not dialing</div>
-    </div>
-
-    <div class="sch-grid">
-
-      <!-- YOU -->
-      <div class="sch-card">
-        <div class="sch-card-head you">You <span class="who-badge">Available all day</span></div>
-        <div class="sch-row hot">
-          <div class="sch-time">8:00–9:30</div>
-          <div class="sch-detail"><div class="label">🔥 Prime Dial Block</div><div class="note">Owners pre-job. Highest pickup rate. Hit new cold leads only.</div></div>
-        </div>
-        <div class="sch-row cold">
-          <div class="sch-time">9:30–11:00</div>
-          <div class="sch-detail"><div class="label">Continue Cold Calls</div><div class="note">Still solid. Work through your list. Log everything in tracker.</div></div>
-        </div>
-        <div class="sch-row cold">
-          <div class="sch-time">11:00–12:00</div>
-          <div class="sch-detail"><div class="label">Follow-Ups + List Prep</div><div class="note">Call back anyone from morning. Build tomorrow's call list. Research leads.</div></div>
-        </div>
-        <div class="sch-row warm">
-          <div class="sch-time">12:00–1:00</div>
-          <div class="sch-detail"><div class="label">⚡ Overlap with Partner</div><div class="note">Tag-team callbacks and scheduled demos together. Debrief morning.</div></div>
-        </div>
-        <div class="sch-row warm">
-          <div class="sch-time">1:00–3:00</div>
-          <div class="sch-detail"><div class="label">Demos + Warm Follow-Ups</div><div class="note">Run booked demos. Re-dial anyone who said "call me after lunch."</div></div>
-        </div>
-        <div class="sch-row hot">
-          <div class="sch-time">4:00–6:00</div>
-          <div class="sch-detail"><div class="label">🔥 Evening Dial Block</div><div class="note">Trades wrapping up jobs. High answer rate. Great for callbacks + new cold.</div></div>
-        </div>
-      </div>
-
-      <!-- PARTNER -->
-      <div class="sch-card">
-        <div class="sch-card-head partner">Partner <span class="who-badge">Home from 12pm</span></div>
-        <div class="sch-row off">
-          <div class="sch-time">8:00–12:00</div>
-          <div class="sch-detail"><div class="label">— Not Available</div><div class="note">You handle morning solo. Save warm/interested leads for partner to follow up.</div></div>
-        </div>
-        <div class="sch-row hot">
-          <div class="sch-time">12:00–1:00</div>
-          <div class="sch-detail"><div class="label">🔥 Jump In Fresh</div><div class="note">Start with the callbacks and "call me this afternoon" leads you flagged. Warm, not cold.</div></div>
-        </div>
-        <div class="sch-row hot">
-          <div class="sch-time">1:00–3:00</div>
-          <div class="sch-detail"><div class="label">🔥 Prime Afternoon Block</div><div class="note">Cold outreach + demos. Owners on lunch, between jobs. Dial hard.</div></div>
-        </div>
-        <div class="sch-row cold">
-          <div class="sch-time">3:00–4:00</div>
-          <div class="sch-detail"><div class="label">Admin + Follow-Up Texts</div><div class="note">Send "still interested?" texts to anyone who went quiet. Update statuses.</div></div>
-        </div>
-        <div class="sch-row hot">
-          <div class="sch-time">4:00–6:00</div>
-          <div class="sch-detail"><div class="label">🔥 Evening Push Together</div><div class="note">Both of you dialing. Best window of the day. Trades off jobs, in truck or at home.</div></div>
-        </div>
-        <div class="sch-row cold">
-          <div class="sch-time">6:00–6:30</div>
-          <div class="sch-detail"><div class="label">Debrief + Tomorrow's List</div><div class="note">Review the day. Set callbacks. Build tomorrow's priority list together.</div></div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- DAILY TARGETS -->
-    <div class="rules-strip" style="margin-bottom:28px;">
-      <h4>📊 Daily Targets Per Person</h4>
-      <div class="rules-grid" style="grid-template-columns: repeat(4,1fr);">
-        <div class="rule-item">Dials<br><span style="font-size:22px;font-weight:900;color:var(--purple);font-family:var(--mono);">40–60</span></div>
-        <div class="rule-item">Conversations<br><span style="font-size:22px;font-weight:900;color:var(--purple);font-family:var(--mono);">8–15</span></div>
-        <div class="rule-item">Demos Booked<br><span style="font-size:22px;font-weight:900;color:var(--purple);font-family:var(--mono);">1–3</span></div>
-        <div class="rule-item">Callbacks Set<br><span style="font-size:22px;font-weight:900;color:var(--purple);font-family:var(--mono);">3–5</span></div>
-      </div>
-    </div>
-
-    <!-- CALL TRACKER -->
-    <div class="sec-label no-print">Today's Call Log <span class="badge" style="background:var(--blue-bg);color:var(--blue);padding:2px 9px;border-radius:4px;font-size:10px;">editable</span></div>
     <div class="tracker no-print">
       <div class="tracker-head">
         <span>CALL TRACKER — <span id="dateDisplay"></span></span>
         <span id="statsDisplay">0 booked · 0 callbacks · 0 calls</span>
       </div>
-      <table class="tracker-table" id="trackerTable">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Business Name</th>
-            <th>Contact</th>
-            <th>Phone</th>
-            <th>Response</th>
-            <th>Next Step</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+      <table class="tracker-table">
+        <thead><tr><th>#</th><th>Business Name</th><th>Contact</th><th>Phone</th><th>Response</th><th>Next Step</th><th>Status</th></tr></thead>
         <tbody id="trackerBody"></tbody>
       </table>
     </div>
-    <div class="no-print" style="text-align:right;margin-top:-14px;margin-bottom:28px;">
+    <div class="no-print" style="text-align:right;margin-top:-10px;margin-bottom:28px;">
       <button onclick="addRow()" style="background:var(--ink);color:white;border:none;padding:8px 18px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans);">+ Add Row</button>
     </div>
 
-    <!-- FOOTER -->
     <div class="doc-footer">
-      Montreal X AI · Caller Battle Card v2.0 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="75181a1b0107101419141c351a0001191a1a1e5b161a18">[email&#160;protected]</a> · 438-886-3878<br>
-      <span style="color:#bbb;">Confidential — Internal Use Only</span>
+      Montreal X AI · Battle Card v3.0 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5b8babba1a7b0b4b9b4bc95baa0a1b9bababefbb6bab8">[email&#160;protected]</a> · 438-886-3878<br>
+      <span style="color:#ccc;">Confidential — Internal Use Only</span>
     </div>
 
   </div>
 </div>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Date display
   const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
   const now = new Date();
   document.getElementById("dateDisplay").textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
 
-  // Tracker
-  const statuses = ["—", "✅ Booked Demo", "📞 Callback", "❌ Not Interested", "📩 Sent Info", "🔁 Follow Up"];
-  let rows = JSON.parse(localStorage.getItem("battlecard_rows") || "[]");
-  if (rows.length === 0) addRow();
+  const statuses = ["—","✅ Booked Demo","📞 Callback","❌ Not Interested","📩 Sent Info","🔁 Follow Up"];
+  let rows = JSON.parse(localStorage.getItem("mxai_v3_rows") || "[]");
+  if (!rows.length) addRow();
 
   function addRow() {
-    rows.push({ biz: "", contact: "", phone: "", response: "", next: "", status: "—" });
+    rows.push({ biz:"", contact:"", phone:"", response:"", next:"", status:"—" });
     renderTable();
   }
 
@@ -641,27 +638,25 @@
       const tr = document.createElement("tr");
       tr.innerHTML = `
         <td style="color:var(--ink3);font-family:var(--mono);font-size:11px;">${i+1}</td>
-        <td><input value="${r.biz}" placeholder="e.g. Tremblay Plumbing" onchange="update(${i},'biz',this.value)"/></td>
-        <td><input value="${r.contact}" placeholder="Owner name" onchange="update(${i},'contact',this.value)"/></td>
-        <td><input value="${r.phone}" placeholder="514-555-0100" onchange="update(${i},'phone',this.value)"/></td>
-        <td><input value="${r.response}" placeholder="What they said..." onchange="update(${i},'response',this.value)"/></td>
-        <td><input value="${r.next}" placeholder="Demo Thu 2pm..." onchange="update(${i},'next',this.value)"/></td>
+        <td><input value="${r.biz}" placeholder="e.g. Tremblay Plumbing" onchange="upd(${i},'biz',this.value)"/></td>
+        <td><input value="${r.contact}" placeholder="Owner name" onchange="upd(${i},'contact',this.value)"/></td>
+        <td><input value="${r.phone}" placeholder="514-555-0100" onchange="upd(${i},'phone',this.value)"/></td>
+        <td><input value="${r.response}" placeholder="What they said..." onchange="upd(${i},'response',this.value)"/></td>
+        <td><input value="${r.next}" placeholder="Demo Thu 2pm..." onchange="upd(${i},'next',this.value)"/></td>
         <td>
-          <select onchange="update(${i},'status',this.value)" style="font-size:12px;border:1px solid var(--rule);border-radius:5px;padding:5px 8px;background:white;font-family:var(--sans);">
-            ${statuses.map(s => `<option value="${s}" ${s===r.status?'selected':''}>${s}</option>`).join('')}
+          <select onchange="upd(${i},'status',this.value)" style="font-size:12px;border:1px solid var(--rule);border-radius:5px;padding:5px 8px;background:white;font-family:var(--sans);">
+            ${statuses.map(s=>`<option value="${s}" ${s===r.status?'selected':''}>${s}</option>`).join('')}
           </select>
-        </td>
-      `;
+        </td>`;
       tbody.appendChild(tr);
     });
     document.getElementById("statsDisplay").textContent = `${booked} booked · ${cb} callbacks · ${rows.length} calls`;
-    localStorage.setItem("battlecard_rows", JSON.stringify(rows));
+    localStorage.setItem("mxai_v3_rows", JSON.stringify(rows));
   }
 
-  function update(i, field, val) {
-    rows[i][field] = val;
-    localStorage.setItem("battlecard_rows", JSON.stringify(rows));
-    // re-render stats only
-    let booked = 0, cb = 0;
-    rows.forEach(r => { if(r.status==="✅ Booked Demo") booked++; if(r.status==="📞 Callback") cb++; });
-    document.getElementById("statsDisp  
+  function upd(i, f, v) {
+    rows[i][f] = v;
+    localStorage.setItem("mxai_v3_rows", JSON.stringify(rows));
+    let booked=0, cb=0;
+    rows.forEach(r=>{ if(r.status==="✅ Booked Demo")booked++; if(r.status==="📞 Callback")cb++; });
+    document.getElementById("statsDi                                   
