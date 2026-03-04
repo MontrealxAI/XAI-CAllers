@@ -173,6 +173,38 @@
     .vm-line { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.65; }
     .vm-tip { font-size: 12px; color: var(--ink3); margin-top: 8px; font-style: italic; }
 
+    /* SCHEDULE */
+    .sch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+    .sch-card { border-radius: 10px; border: 1px solid var(--rule); overflow: hidden; }
+    .sch-card-head { padding: 13px 18px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; justify-content: space-between; }
+    .sch-card-head.you { background: var(--ink); color: white; }
+    .sch-card-head.partner { background: var(--blue-bg); color: var(--blue); border-bottom: 1px solid var(--blue-border); }
+    .sch-card-head .who-badge { font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+    .sch-card-head.you .who-badge { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
+    .sch-card-head.partner .who-badge { background: var(--blue-border); color: var(--blue); }
+    .sch-row { display: flex; align-items: stretch; border-bottom: 1px solid var(--rule); }
+    .sch-row:last-child { border-bottom: none; }
+    .sch-time { width: 110px; flex-shrink: 0; padding: 12px 14px; font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--ink3); border-right: 1px solid var(--rule); display: flex; align-items: center; }
+    .sch-detail { padding: 11px 14px; flex: 1; }
+    .sch-detail .label { font-size: 12px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+    .sch-detail .note { font-size: 11px; color: var(--ink3); font-style: italic; }
+    .sch-row.hot { background: var(--green-bg); }
+    .sch-row.hot .sch-time { color: var(--green); }
+    .sch-row.hot .sch-detail .label { color: var(--green); }
+    .sch-row.warm { background: var(--amber-bg); }
+    .sch-row.warm .sch-time { color: var(--amber); }
+    .sch-row.cold { background: #FAFAF8; }
+    .sch-row.off { background: #F3F3F0; }
+    .sch-row.off .sch-time, .sch-row.off .sch-detail .label, .sch-row.off .sch-detail .note { color: #CCCCCC; }
+    .sch-legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .leg { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink2); }
+    .leg-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .why-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 28px; }
+    .why-box { background: #F5F5F3; border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; }
+    .why-box h4 { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 7px; }
+    .why-box p { font-size: 12px; color: var(--ink2); line-height: 1.6; }
+    .why-box strong { color: var(--ink); }
+
     /* CALL TRACKER */
     .tracker { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; margin-bottom: 28px; }
     .tracker-head { background: var(--ink); color: white; padding: 12px 20px; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; display: flex; justify-content: space-between; }
@@ -206,7 +238,7 @@
 
 <!-- TOOLBAR -->
 <div class="toolbar no-print">
-  <div class="toolbar-logo">MONTREAL X AI // CALLER BATTLE CARD</div>
+  <div class="toolbar-logo">MONTREAL X AI // BATTLE CARD + SCHEDULE</div>
   <div class="toolbar-right">
     <button class="tb-btn tb-reset" onclick="resetTracker()">Reset Tracker</button>
     <button class="tb-btn tb-print" onclick="window.print()">🖨 Print</button>
@@ -219,7 +251,7 @@
   <div class="doc-header">
     <div>
       <div class="doc-title">COLD CALL BATTLE CARD</div>
-      <div class="doc-sub">AI Receptionist · Service Business Outreach · Montreal X AI</div>
+      <div class="doc-sub">AI Receptionist · Service Business Outreach · Calling Schedule · Montreal X AI</div>
     </div>
     <div class="doc-tag">v2.0 — CALLER EDITION</div>
   </div>
@@ -447,6 +479,106 @@
 
     <div class="divider"></div>
 
+    <div class="divider"></div>
+
+    <!-- SCHEDULE -->
+    <div class="sec-label">Calling Schedule — When To Dial</div>
+
+    <div class="why-row">
+      <div class="why-box">
+        <h4>🔥 Why Morning Wins</h4>
+        <p>Plumbers & trades leave for jobs by <strong>8am</strong>. Catch them before they're on a ladder. <strong>8–9:30am</strong> is the single highest answer-rate window of the day.</p>
+      </div>
+      <div class="why-box">
+        <h4>⚡ Why 4–6pm Works</h4>
+        <p>Jobs wrap up, guys are in the truck driving home. <strong>Not mid-task.</strong> More relaxed, more likely to talk. Second best window, especially for callbacks.</p>
+      </div>
+      <div class="why-box">
+        <h4>🚫 Why Midday Is Weak</h4>
+        <p>On a job, hands dirty, can't talk. <strong>Exception:</strong> if they said call at noon, honour it exactly. Otherwise use midday for list prep and follow-ups.</p>
+      </div>
+    </div>
+
+    <div class="sch-legend">
+      <div class="leg"><div class="leg-dot" style="background:var(--green-bg);border:1px solid var(--green-border);"></div> Best window — dial hard</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--amber-bg);border:1px solid var(--amber-border);"></div> Good window — callbacks + warm leads</div>
+      <div class="leg"><div class="leg-dot" style="background:#FAFAF8;border:1px solid var(--rule);"></div> Prep / admin</div>
+      <div class="leg"><div class="leg-dot" style="background:#F3F3F0;border:1px solid #E0E0DC;"></div> Off / not dialing</div>
+    </div>
+
+    <div class="sch-grid">
+
+      <!-- YOU -->
+      <div class="sch-card">
+        <div class="sch-card-head you">You <span class="who-badge">Available all day</span></div>
+        <div class="sch-row hot">
+          <div class="sch-time">8:00–9:30</div>
+          <div class="sch-detail"><div class="label">🔥 Prime Dial Block</div><div class="note">Owners pre-job. Highest pickup rate. Hit new cold leads only.</div></div>
+        </div>
+        <div class="sch-row cold">
+          <div class="sch-time">9:30–11:00</div>
+          <div class="sch-detail"><div class="label">Continue Cold Calls</div><div class="note">Still solid. Work through your list. Log everything in tracker.</div></div>
+        </div>
+        <div class="sch-row cold">
+          <div class="sch-time">11:00–12:00</div>
+          <div class="sch-detail"><div class="label">Follow-Ups + List Prep</div><div class="note">Call back anyone from morning. Build tomorrow's call list. Research leads.</div></div>
+        </div>
+        <div class="sch-row warm">
+          <div class="sch-time">12:00–1:00</div>
+          <div class="sch-detail"><div class="label">⚡ Overlap with Partner</div><div class="note">Tag-team callbacks and scheduled demos together. Debrief morning.</div></div>
+        </div>
+        <div class="sch-row warm">
+          <div class="sch-time">1:00–3:00</div>
+          <div class="sch-detail"><div class="label">Demos + Warm Follow-Ups</div><div class="note">Run booked demos. Re-dial anyone who said "call me after lunch."</div></div>
+        </div>
+        <div class="sch-row hot">
+          <div class="sch-time">4:00–6:00</div>
+          <div class="sch-detail"><div class="label">🔥 Evening Dial Block</div><div class="note">Trades wrapping up jobs. High answer rate. Great for callbacks + new cold.</div></div>
+        </div>
+      </div>
+
+      <!-- PARTNER -->
+      <div class="sch-card">
+        <div class="sch-card-head partner">Partner <span class="who-badge">Home from 12pm</span></div>
+        <div class="sch-row off">
+          <div class="sch-time">8:00–12:00</div>
+          <div class="sch-detail"><div class="label">— Not Available</div><div class="note">You handle morning solo. Save warm/interested leads for partner to follow up.</div></div>
+        </div>
+        <div class="sch-row hot">
+          <div class="sch-time">12:00–1:00</div>
+          <div class="sch-detail"><div class="label">🔥 Jump In Fresh</div><div class="note">Start with the callbacks and "call me this afternoon" leads you flagged. Warm, not cold.</div></div>
+        </div>
+        <div class="sch-row hot">
+          <div class="sch-time">1:00–3:00</div>
+          <div class="sch-detail"><div class="label">🔥 Prime Afternoon Block</div><div class="note">Cold outreach + demos. Owners on lunch, between jobs. Dial hard.</div></div>
+        </div>
+        <div class="sch-row cold">
+          <div class="sch-time">3:00–4:00</div>
+          <div class="sch-detail"><div class="label">Admin + Follow-Up Texts</div><div class="note">Send "still interested?" texts to anyone who went quiet. Update statuses.</div></div>
+        </div>
+        <div class="sch-row hot">
+          <div class="sch-time">4:00–6:00</div>
+          <div class="sch-detail"><div class="label">🔥 Evening Push Together</div><div class="note">Both of you dialing. Best window of the day. Trades off jobs, in truck or at home.</div></div>
+        </div>
+        <div class="sch-row cold">
+          <div class="sch-time">6:00–6:30</div>
+          <div class="sch-detail"><div class="label">Debrief + Tomorrow's List</div><div class="note">Review the day. Set callbacks. Build tomorrow's priority list together.</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DAILY TARGETS -->
+    <div class="rules-strip" style="margin-bottom:28px;">
+      <h4>📊 Daily Targets Per Person</h4>
+      <div class="rules-grid" style="grid-template-columns: repeat(4,1fr);">
+        <div class="rule-item">Dials<br><span style="font-size:22px;font-weight:900;color:var(--purple);font-family:var(--mono);">40–60</span></div>
+        <div class="rule-item">Conversations<br><span style="font-size:22px;font-weight:900;color:var(--purple);font-family:var(--mono);">8–15</span></div>
+        <div class="rule-item">Demos Booked<br><span style="font-size:22px;font-weight:900;color:var(--purple);font-family:var(--mono);">1–3</span></div>
+        <div class="rule-item">Callbacks Set<br><span style="font-size:22px;font-weight:900;color:var(--purple);font-family:var(--mono);">3–5</span></div>
+      </div>
+    </div>
+
     <!-- CALL TRACKER -->
     <div class="sec-label no-print">Today's Call Log <span class="badge" style="background:var(--blue-bg);color:var(--blue);padding:2px 9px;border-radius:4px;font-size:10px;">editable</span></div>
     <div class="tracker no-print">
@@ -475,14 +607,14 @@
 
     <!-- FOOTER -->
     <div class="doc-footer">
-      Montreal X AI · Caller Battle Card v2.0 · montrealai@outlook.com · 438-886-3878<br>
+      Montreal X AI · Caller Battle Card v2.0 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="75181a1b0107101419141c351a0001191a1a1e5b161a18">[email&#160;protected]</a> · 438-886-3878<br>
       <span style="color:#bbb;">Confidential — Internal Use Only</span>
     </div>
 
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Date display
   const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -532,14 +664,4 @@
     // re-render stats only
     let booked = 0, cb = 0;
     rows.forEach(r => { if(r.status==="✅ Booked Demo") booked++; if(r.status==="📞 Callback") cb++; });
-    document.getElementById("statsDisplay").textContent = `${booked} booked · ${cb} callbacks · ${rows.length} calls`;
-  }
-
-  function resetTracker() {
-    if (confirm("Reset today's call log?")) { rows = []; addRow(); }
-  }
-
-  renderTable();
-</script>
-</body>
-</html>
+    document.getElementById("statsDisp  
